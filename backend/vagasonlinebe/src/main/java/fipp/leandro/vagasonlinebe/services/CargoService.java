@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import fipp.leandro.vagasonlinebe.entities.Cargo;
 import fipp.leandro.vagasonlinebe.entities.Empresa;
 import fipp.leandro.vagasonlinebe.util.Conexao;
 import org.bson.Document;
@@ -13,25 +14,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class EmpresaService {
+public class CargoService {
     private MongoDatabase database;
 
-    public EmpresaService(){
+    public CargoService(){
         this.database = Conexao.getInstance().getDatabase();
     }
 
-    public List<Empresa> getAll() {
-        List<Empresa> empresasList = new ArrayList<>();
+    public List<Cargo> getAll() {
+        List<Cargo> cargosList = new ArrayList<>();
         try {
-            MongoCollection<Document> collection = database.getCollection("empresas");
+            MongoCollection<Document> collection = database.getCollection("cargos");
             MongoCursor<Document> cursor = collection.find().iterator();
 
             while (cursor.hasNext())
-                empresasList.add(new Gson().fromJson(cursor.next().toJson(), Empresa.class));
+                cargosList.add(new Gson().fromJson(cursor.next().toJson(), Cargo.class));
         }
         catch (Exception e) {
             System.out.println(e);
         }
-        return empresasList;
+        return cargosList;
     }
 }

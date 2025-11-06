@@ -15,10 +15,10 @@ import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.eq;
 
 @Service
-public class VagasService {
+public class VagaService {
     private MongoDatabase database;
 
-    public VagasService() {
+    public VagaService() {
         this.database = Conexao.getInstance().getDatabase();
     }
 

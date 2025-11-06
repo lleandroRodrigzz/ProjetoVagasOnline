@@ -1,7 +1,7 @@
 package fipp.leandro.vagasonlinebe.restcontrollers;
 
 import fipp.leandro.vagasonlinebe.entities.Vaga;
-import fipp.leandro.vagasonlinebe.services.VagasService;
+import fipp.leandro.vagasonlinebe.services.VagaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "apis")
-public class vagasoonlineRestController {
+public class VagaRestController {
     @Autowired
-    VagasService vagasService;
+    VagaService vagasService;
 
     @GetMapping("vagas/get-all")
     public ResponseEntity<Object> getAllVagas(){
