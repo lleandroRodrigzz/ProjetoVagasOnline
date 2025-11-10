@@ -1,5 +1,8 @@
 package fipp.leandro.vagasonlinebe.entities;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "cargos")
 public class Cargo {
     private String nome;
 

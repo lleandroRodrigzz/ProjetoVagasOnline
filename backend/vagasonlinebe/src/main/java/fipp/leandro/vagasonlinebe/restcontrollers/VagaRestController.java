@@ -18,6 +18,34 @@ public class VagaRestController {
         return ResponseEntity.ok(vagasService.getAll());
     }
 
+    @PostMapping("vagas")
+    public ResponseEntity<Object> save(@RequestBody Vaga vaga) {
+        Vaga novaVaga = vagasService.add(vaga);
+        if(novaVaga != null) {
+            return ResponseEntity.ok(novaVaga);
+        }
+        return ResponseEntity.badRequest().body("Erro ao incluir vaga!");
+    }
+
+    @PutMapping("vagas")
+    public ResponseEntity<Object> update(@RequestBody Vaga vaga) {
+        Vaga vaga1 = vagasService.getOne(vaga.getRegistro());
+        if(vaga1 != null) {
+            vaga.setId(vaga1.getId());
+            vagasService.add(vaga);
+            return ResponseEntity.ok("Vaga de registro " + vaga.getRegistro() + " foi atualizada com sucesso!!!");
+        }
+        return ResponseEntity.badRequest().body("Erro ao atualizar vaga de registro: " + vaga.getRegistro());
+    }
+
+    @DeleteMapping("vagas/{registro}")
+    public ResponseEntity<Object> delete(@PathVariable String registro) {
+        boolean flag = vagasService.delete(registro);
+        if (flag)
+            return ResponseEntity.ok("Vaga excluída com sucesso!");
+        return ResponseEntity.badRequest().body("Erro ao excluir vaga!");
+    }
+
     @GetMapping("vagas/get-one/{registro}")
     public ResponseEntity<Object> getOneVaga(@PathVariable String registro){
         Vaga vaga = vagasService.getOne(registro);

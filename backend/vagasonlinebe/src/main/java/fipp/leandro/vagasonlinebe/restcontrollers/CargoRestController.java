@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "apis")
-public class CargoRestController {
+public class    CargoRestController {
     @Autowired
     private CargoService cargoService;
 

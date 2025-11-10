@@ -1,6 +1,12 @@
 package fipp.leandro.vagasonlinebe.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "vagas")
 public class Vaga {
+    @Id
+    private String id;
     private String registro;
     private Empresa empresa;
     private String cargo;
@@ -28,6 +34,14 @@ public class Vaga {
     }
 
     public Vaga() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getRegistro() {
