@@ -2,7 +2,6 @@ package fipp.leandro.vagasonlinebe.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "empresas")
 public class Empresa {
     private String nome_fantasia;
     private String razao_social;
