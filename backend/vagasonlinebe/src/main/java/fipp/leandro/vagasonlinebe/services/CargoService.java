@@ -5,7 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import fipp.leandro.vagasonlinebe.entities.Cargo;
-import fipp.leandro.vagasonlinebe.entities.Empresa;
+// ...
 import fipp.leandro.vagasonlinebe.util.Conexao;
 import org.bson.Document;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class CargoService {
         this.database = Conexao.getInstance().getDatabase();
     }
 
-    public List<Cargo> getAll() {
+    public List<Cargo> getAll() throws Exception {
         List<Cargo> cargosList = new ArrayList<>();
         try {
             MongoCollection<Document> collection = database.getCollection("cargos");
@@ -32,6 +32,7 @@ public class CargoService {
         }
         catch (Exception e) {
             System.out.println(e);
+            throw new RuntimeException("Erro ao recuperar cargos", e);
         }
         return cargosList;
     }

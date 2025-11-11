@@ -20,7 +20,7 @@ public class EmpresaService {
         this.database = Conexao.getInstance().getDatabase();
     }
 
-    public List<Empresa> getAll() {
+    public List<Empresa> getAll() throws  Exception {
         List<Empresa> empresasList = new ArrayList<>();
         try {
             MongoCollection<Document> collection = database.getCollection("empresas");
@@ -31,6 +31,7 @@ public class EmpresaService {
         }
         catch (Exception e) {
             System.out.println(e);
+            throw new RuntimeException("Erro ao recuperar empresas", e);
         }
         return empresasList;
     }
