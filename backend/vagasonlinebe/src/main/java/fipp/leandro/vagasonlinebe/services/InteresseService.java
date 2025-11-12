@@ -1,9 +1,11 @@
 package fipp.leandro.vagasonlinebe.services;
 
+import com.mongodb.client.MongoDatabase;
 import fipp.leandro.vagasonlinebe.entities.Interesse;
 import fipp.leandro.vagasonlinebe.entities.Candidato;
 import fipp.leandro.vagasonlinebe.entities.Vaga;
 import fipp.leandro.vagasonlinebe.repositories.InteresseRepository;
+import fipp.leandro.vagasonlinebe.util.Conexao;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +13,12 @@ import java.util.List;
 @Service
 public class InteresseService {
 
-    InteresseRepository repository;
+    private MongoDatabase database;
+    private InteresseRepository repository;
+
+    public InteresseService() {
+        this.database = Conexao.getInstance().getDatabase();
+    }
 
     public InteresseService(InteresseRepository repository) {
         this.repository = repository;

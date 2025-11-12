@@ -22,7 +22,6 @@ public class CargoRestController {
     @GetMapping("cargos/get-all")
     public ResponseEntity<Object> getAllCargos(){
         try {
-
             List<Cargo> cargos = cargoService.getAll();
             return ResponseEntity.ok(cargos);
         }
