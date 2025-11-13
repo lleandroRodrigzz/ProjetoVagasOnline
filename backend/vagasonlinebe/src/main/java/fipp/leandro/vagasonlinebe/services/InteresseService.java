@@ -6,6 +6,7 @@ import fipp.leandro.vagasonlinebe.entities.Candidato;
 import fipp.leandro.vagasonlinebe.entities.Vaga;
 import fipp.leandro.vagasonlinebe.repositories.InteresseRepository;
 import fipp.leandro.vagasonlinebe.util.Conexao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 public class InteresseService {
 
     private MongoDatabase database;
+
+    @Autowired
     private InteresseRepository repository;
 
     public InteresseService() {

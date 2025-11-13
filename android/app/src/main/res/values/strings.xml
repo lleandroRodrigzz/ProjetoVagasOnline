@@ -1,3 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyVagasOnlineApp</string>
+    <string name="app_name">Vagas App</string>
+    <string name="cadastro_candidato">Cadastro de Candidato</string>
+    <string name="nome">Nome Completo</string>
+    <string name="cpf">CPF</string>
+    <string name="email">E-mail</string>
+    <string name="telefone">Telefone</string>
+    <string name="formacao">Formação</string>
+    <string name="mostrar_vagas">Mostrar Vagas Disponíveis</string>
+    <string name="vagas_disponiveis">Vagas Disponíveis</string>
+    <string name="candidatar">Candidatar-se</string>
 </resources>

@@ -1,4 +1,4 @@
-package leandro.unoeste.myvagasonlineapp;
+package com.example.vagasapp;
 
 import org.junit.Test;
 

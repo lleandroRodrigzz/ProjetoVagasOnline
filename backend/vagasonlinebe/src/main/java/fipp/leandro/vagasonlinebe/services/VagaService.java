@@ -4,6 +4,7 @@ import com.mongodb.client.MongoDatabase;
 import fipp.leandro.vagasonlinebe.entities.Vaga;
 import fipp.leandro.vagasonlinebe.repositories.VagaRepository;
 import fipp.leandro.vagasonlinebe.util.Conexao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
 public class VagaService {
 
     private MongoDatabase database;
+
+    @Autowired
     private VagaRepository repository;
 
     public VagaService(VagaRepository repository) {

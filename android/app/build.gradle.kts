@@ -3,14 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "leandro.unoeste.myvagasonlineapp"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "com.example.vagasapp"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "leandro.unoeste.myvagasonlineapp"
-        minSdk = 30
+        applicationId = "com.example.vagasapp"
+        minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -34,6 +32,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -41,4 +40,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.1.0")
 }

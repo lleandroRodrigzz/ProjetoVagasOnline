@@ -6,18 +6,16 @@ public class Candidato {
     String email;
     String telefone;
     String formacao;
-    int idade;
 
     public Candidato() {
     }
 
-    public Candidato(String nome, String cpf, String email, String telefone, String formacao, int idade) {
+    public Candidato(String nome, String cpf, String email, String telefone, String formacao) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
         this.formacao = formacao;
-        this.idade = idade;
     }
 
     public String getNome() {
@@ -58,13 +56,5 @@ public class Candidato {
 
     public void setFormacao(String formacao) {
         this.formacao = formacao;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
 }
