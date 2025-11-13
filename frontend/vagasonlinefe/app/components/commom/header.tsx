@@ -1,6 +1,5 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
@@ -21,8 +20,8 @@ export default function Cabecalho() {
             className="flex items-center space-x-3 group transition-transform duration-300 hover:scale-105"
           >
             <h1>
-              <span className="text-yellow-400 font-bold">VAGAS</span>
-              <span className="text-blue-400 font-bold"> ONLINE</span>
+              <span className="text-white-400 font-bold">VAGAS</span>
+              <span className="text-violet-400 font-bold"> ONLINE</span>
             </h1>
           </Link>
 
@@ -31,20 +30,23 @@ export default function Cabecalho() {
               href="/home"
               className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
                 isActive("/home")
-                  ? "text-yellow-400 bg-yellow-400/10"
-                  : "text-zinc-300 hover:text-yellow-400 hover:bg-zinc-800/50"
+                  ? "text-violet-400 bg-violet-400/10"
+                  : "text-zinc-300 hover:text-violet-400 hover:bg-zinc-800/50"
               }`}
             >
               Home
             </Link>
+            <Link
+              href="/suporte"
+              className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
+                isActive("/suporte")
+                  ? "text-violet-400 bg-violet-400/10"
+                  : "text-zinc-300 hover:text-violet-400 hover:bg-zinc-800/50"
+              }`}
+            >
+              Suporte
+            </Link>
           </div>
-
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-zinc-300 hover:text-yellow-400 transition-colors duration-300"
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
       </div>
 
@@ -58,12 +60,23 @@ export default function Cabecalho() {
             href="/home"
             onClick={() => setIsMenuOpen(false)}
             className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-300 ${
-              isActive("/quemSouEu")
-                ? "text-yellow-400 bg-yellow-400/10"
-                : "text-zinc-300 hover:text-yellow-400 hover:bg-zinc-800/50"
+              isActive("/home")
+                ? "text-violet-400 bg-violet-400/10"
+                : "text-zinc-300 hover:text-violet-400 hover:bg-zinc-800/50"
             }`}
           >
             Home
+          </Link>
+          <Link
+            href="/suporte"
+            onClick={() => setIsMenuOpen(false)}
+            className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              isActive("/suporte")
+                ? "text-violet-400 bg-violet-400/10"
+                : "text-zinc-300 hover:text-violet-400 hover:bg-zinc-800/50"
+            }`}
+          >
+            Suporte
           </Link>
         </div>
       </div>

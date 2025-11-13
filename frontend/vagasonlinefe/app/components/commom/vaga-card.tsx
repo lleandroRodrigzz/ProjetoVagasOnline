@@ -27,7 +27,7 @@ interface VagaCardProps {
 
 export function VagaCard({ vaga, onEdit, onDelete }: VagaCardProps) {
   return (
-    <Card className="flex flex-col justify-between shadow-md">
+    <Card className="flex flex-col justify-between shadow-lg">
       <CardHeader>
         <CardTitle className="text-xl">{vaga.cargo}</CardTitle>
         <CardDescription className="flex items-center gap-2 pt-1">
@@ -47,20 +47,21 @@ export function VagaCard({ vaga, onEdit, onDelete }: VagaCardProps) {
         </div>
         <div className="pt-2">
           <h4 className="font-semibold">Conhecimentos:</h4>
-          <p className="text-sm text-slate-600 dark:text-blue-400">
+          <p className="text-sm text-slate-600 dark:text-violet-600">
             {vaga.conhecimentos_requeridos}
           </p>
         </div>
       </CardContent>
       <CardFooter className="flex justify-end gap-2 p-4">
         <Button
-          variant="ghost"
+          variant="destructive"
+          className="cursor-pointer"
           size="sm"
           onClick={() => onDelete(vaga.registro)} // <-- Passa o registro
         >
           <Trash2 className="h-4 w-4" />
         </Button>
-        <Button variant="default" size="sm" onClick={() => onEdit(vaga)}>
+        <Button variant="default" size="sm" className="cursor-pointer" onClick={() => onEdit(vaga)}>
           <Edit className="h-4 w-4 mr-2" /> Editar
         </Button>
       </CardFooter>

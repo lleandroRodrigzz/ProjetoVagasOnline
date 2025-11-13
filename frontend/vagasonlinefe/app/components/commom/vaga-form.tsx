@@ -176,7 +176,7 @@ export function VagaForm({
                     </SelectTrigger>
                     <SelectContent>
                       {cargos.map((cargo) => (
-                        <SelectItem key={cargo._id} value={cargo.nome}>
+                        <SelectItem key={cargo.nome} value={cargo.nome}>
                           {cargo.nome}
                         </SelectItem>
                       ))}

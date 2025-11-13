@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" suppressHydrationWarning>
-      <body className={`${geistJetBrainsMono.variable} font-sans antialiased`}>
+      <body className={`${geistJetBrainsMono.className} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

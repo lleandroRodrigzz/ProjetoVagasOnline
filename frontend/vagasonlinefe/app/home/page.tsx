@@ -8,6 +8,7 @@ import { Plus } from "lucide-react";
 import { VagaCard } from "@/app/components/commom/vaga-card";
 import { VagaForm } from "@/app/components/commom/vaga-form";
 import Toast from "react-hot-toast";
+import { ThemeProvider } from "../components/commom/theme-provider";
 
 export default function Home() {
   const toast = Toast;
@@ -120,7 +121,7 @@ export default function Home() {
       <header className="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">VagasOnline</h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-black dark:text-violet-600">
             Gerencie as vagas de emprego da sua plataforma.
           </p>
         </div>
@@ -146,7 +147,7 @@ export default function Home() {
         {!isLoading &&
           vagas.map((vaga) => (
             <VagaCard
-              key={vaga._id}
+              key={vaga.registro}
               vaga={vaga}
               onEdit={handleEdit}
               onDelete={handleDelete}
