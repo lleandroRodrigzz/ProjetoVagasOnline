@@ -2,8 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F5F5F5">
+    android:background="#000000"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,8 +16,8 @@
             android:layout_marginTop="80dp"
             android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:text="Cadastro de Candidato"
-            android:textColor="#333333"
+            android:text="Vagas Online"
+            android:textColor="#9C27B0"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -30,11 +30,11 @@
                 android:id="@+id/edtNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nome Completo"
+                android:background="@color/white"
+                android:hint="Nome completo"
                 android:inputType="textPersonName"
                 android:padding="12dp"
-                android:background="@android:color/white"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -46,11 +46,11 @@
                 android:id="@+id/edtCpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:hint="CPF"
                 android:inputType="number"
                 android:padding="12dp"
-                android:background="@android:color/white"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,11 +62,11 @@
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress"
                 android:padding="12dp"
-                android:background="@android:color/white"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,11 +78,11 @@
                 android:id="@+id/edtTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:hint="Telefone"
                 android:inputType="phone"
                 android:padding="12dp"
-                android:background="@android:color/white"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -94,23 +94,25 @@
                 android:id="@+id/edtFormacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:hint="Formação"
                 android:inputType="text"
                 android:padding="12dp"
-                android:background="@android:color/white"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnMostrarVagas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mostrar Vagas Disponíveis"
-            android:textColor="@android:color/white"
-            android:background="#2196F3"
+            android:background="#9C27B0"
+            android:backgroundTint="#9C27B0"
             android:padding="16dp"
+            android:text="Mostrar Vagas Disponíveis"
+            android:textColor="@color/white"
+            android:textColorLink="#9C27B0"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>
