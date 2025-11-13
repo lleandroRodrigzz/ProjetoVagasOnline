@@ -54,14 +54,11 @@ export function VagaForm({
   onOpenChange,
   onSave,
 }: VagaFormProps) {
-  // O estado do formulário NUNCA inclui _id ou registro
   const [formData, setFormData] = useState<VagaPayload>(emptyFormData);
 
-  // Efeito para popular o formulário quando 'vaga' (para edição) mudar
   useEffect(() => {
     if (vaga) {
-      // Se estamos editando, separamos o _id/registro dos dados do formulário
-      const { _id, ...dadosForm } = vaga;
+      const { ...dadosForm } = vaga;
       setFormData(dadosForm);
     } else {
       // Se estamos criando, resetamos o formulário
@@ -94,13 +91,11 @@ export function VagaForm({
 
   const handleCargoSelect = (selectedValue: string) => {
     console.log("Cargo selecionado:", selectedValue);
-    // O 'selectedValue' será o nome do cargo
     setFormData((prev) => ({ ...prev, cargo: selectedValue }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Passa os dados do formulário E a vaga original (para saber se é edição)
     onSave(formData, vaga);
   };
 
@@ -134,7 +129,7 @@ export function VagaForm({
                   />
                   <Label htmlFor="nome_fantasia">Nome Fantasia</Label>
                   <Select
-                    value={formData.empresa.nome_fantasia} 
+                    value={formData.empresa.nome_fantasia}
                     onValueChange={handleEmpresaSelect}
                   >
                     <SelectTrigger id="nome_fantasia">
@@ -142,10 +137,7 @@ export function VagaForm({
                     </SelectTrigger>
                     <SelectContent>
                       {empresas.map((empresa, index) => (
-                        <SelectItem
-                          key={index}
-                          value={empresa.nome_fantasia}
-                        >
+                        <SelectItem key={index} value={empresa.nome_fantasia}>
                           {empresa.nome_fantasia}
                         </SelectItem>
                       ))}

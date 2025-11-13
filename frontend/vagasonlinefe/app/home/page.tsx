@@ -7,23 +7,22 @@ import { Button } from "@/app/components/ui/button";
 import { Plus } from "lucide-react";
 import { VagaCard } from "@/app/components/commom/vaga-card";
 import { VagaForm } from "@/app/components/commom/vaga-form";
+import Toast from "react-hot-toast";
 
 export default function Home() {
-  // Estados para os dados da API
+  const toast = Toast;
+
   const [vagas, setVagas] = useState<Vaga[]>([]);
   const [empresas, setEmpresas] = useState<Empresa[]>([]);
   const [cargos, setCargos] = useState<Cargo[]>([]);
 
-  // Estados para controle do UI
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingVaga, setEditingVaga] = useState<Vaga | null>(null);
   const [isLoading, setIsLoading] = useState(true); // Estado de loading
 
-  // Função para carregar todos os dados da API
   const loadData = async () => {
     setIsLoading(true);
     try {
-      // Busca tudo em paralelo
       const [vagasData, empresasData, cargosData] = await Promise.all([
         api.getVagas(),
         api.getEmpresas(),
@@ -33,14 +32,12 @@ export default function Home() {
       setEmpresas(empresasData);
       setCargos(cargosData);
     } catch (error) {
-      console.error("Erro ao buscar dados:", error);
-      // TODO: Mostrar um toast/alerta de erro para o usuário
+      toast.error("Erro ao carregar dados: " + error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Carrega os dados quando o componente é montado
   useEffect(() => {
     loadData();
   }, []);
@@ -48,12 +45,12 @@ export default function Home() {
   // --- Funções CRUD ---
 
   const handleAddNew = () => {
-    setEditingVaga(null); // Garante que não está editando
+    setEditingVaga(null);
     setIsFormOpen(true);
   };
 
   const handleEdit = (vaga: Vaga) => {
-    setEditingVaga(vaga); // Define a vaga para edição
+    setEditingVaga(vaga);
     setIsFormOpen(true);
   };
 
@@ -64,25 +61,45 @@ export default function Home() {
     try {
       if (vagaOriginal) {
         // --- MODO EDIÇÃO ---
-        // Remonta o objeto Vaga completo para enviar à API
         const vagaAtualizada = {
-          ...vagaOriginal, // Contém _id e registro
-          ...formData, // Contém os dados atualizados do formulário
+          ...vagaOriginal,
+          ...formData,
         };
         await api.updateVaga(vagaAtualizada);
-        console.log("Vaga atualizada:", vagaAtualizada);
+        toast.success(
+          "Vaga para " +
+            formData.cargo +
+            " para a empresa " +
+            formData.empresa.nome_fantasia +
+            " atualizada com sucesso!"
+        );
       } else {
         // --- MODO CRIAÇÃO ---
-        await api.createVaga(formData);
-        console.log("Vaga criada:", formData);
-      }
+        const registroJaExiste = vagas.some(
+          (v) => v.registro === formData.registro
+        );
 
+        if (registroJaExiste) {
+          toast.error(
+            "Erro ao Salvar. O código de registro da vaga já existe."
+          );
+          return;
+        }
+
+        await api.createVaga(formData);
+        toast.success(
+          "Vaga para " +
+            formData.cargo +
+            " para a empresa " +
+            formData.empresa.nome_fantasia +
+            " criada com sucesso!"
+        );
+      }
       setIsFormOpen(false);
       setEditingVaga(null);
-      await loadData(); // Recarrega os dados após salvar
+      await loadData();
     } catch (error) {
-      console.error("Erro ao salvar vaga:", error);
-      // TODO: Mostrar alerta de erro
+      toast.error("Erro ao salvar vaga:" + error);
     }
   };
 
@@ -90,11 +107,10 @@ export default function Home() {
     if (window.confirm("Tem certeza que deseja excluir esta vaga?")) {
       try {
         await api.deleteVaga(registro);
-        console.log("Vaga excluída:", registro);
+        toast.success("Vaga excluída com sucesso!");
         await loadData(); // Recarrega os dados após excluir
       } catch (error) {
-        console.error("Erro ao excluir vaga:", error);
-        // TODO: Mostrar alerta de erro
+        toast.error("Erro ao excluir vaga: " + error);
       }
     }
   };
@@ -128,15 +144,14 @@ export default function Home() {
         )}
 
         {!isLoading &&
-          vagas
-            .map((vaga) => (
-              <VagaCard
-                key={vaga._id} // Agora isso é 100% seguro
-                vaga={vaga}
-                onEdit={handleEdit}
-                onDelete={handleDelete} // Certifique-se que onDelete está aqui
-              />
-            ))}
+          vagas.map((vaga) => (
+            <VagaCard
+              key={vaga._id}
+              vaga={vaga}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+          ))}
       </div>
 
       {/* --- Formulário (Dialog) --- */}

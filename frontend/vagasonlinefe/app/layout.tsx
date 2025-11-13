@@ -3,6 +3,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/commom/theme-provider";
 import Header from "./components/commom/header";
+import { Toaster } from "react-hot-toast";
 
 const geistJetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -29,6 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
+          <Toaster />
           {children}
         </ThemeProvider>
       </body>

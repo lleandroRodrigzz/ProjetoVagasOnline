@@ -1,5 +1,3 @@
-// src/components/vagas/VagaCard.tsx
-
 "use client";
 
 import { Vaga } from "@/types";
